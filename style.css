@@ -111,3 +111,15 @@
   input{
     width: 25%;
   }
+
+  .editButton {
+    margin-left: 350px;
+  }
+  
+  .delButton {
+    margin-left: 10px;
+  }
+
+  span {
+    width: 200px;
+  }
