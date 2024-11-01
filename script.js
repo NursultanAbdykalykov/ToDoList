@@ -10,6 +10,8 @@ function renderToDos(array) {
     for (const item of array) {
         let li = document.createElement('li');
         let span = document.createElement('span');
+        const checkButton = createInputCheckbox(li, span);
+        li.appendChild(checkButton);
         span.textContent = item;
         const editButton = createEditButton(li, span);
         const delButton = createDeleteButton(li, span);
@@ -21,7 +23,6 @@ function renderToDos(array) {
 
 renderToDos(data);
 
-
 function createInput(liElement, spanElement) {
     const inputEdit = document.createElement("input");
     inputEdit.style.width = "25%";
@@ -30,6 +31,8 @@ function createInput(liElement, spanElement) {
         liElement.textContent = "";
         const span = document.createElement("span");
         span.textContent = event.target.value;
+        const checkButton = createInputCheckbox(liElement, span);
+        liElement.appendChild(checkButton)
         const editButton = createEditButton(liElement, span);
         const delButton = createDeleteButton(liElement, spanElement);
         liElement.append(span, editButton, delButton);
@@ -80,6 +83,21 @@ function createDeleteButton(liElement, spanElement) {
     return delButton;
 }
 
+function createInputCheckbox(liElement, spanElement) {
+    const checkButton = document.createElement("input");
+    checkButton.classList.add("checkbox");
+    checkButton.setAttribute('type', 'checkbox');
+    checkButton.addEventListener("change", () => {
+        if (checkButton.checked) {
+            spanElement.style.textDecoration = 'line-through';
+        } else {
+            spanElement.style.textDecoration = 'none';
+        }
+
+    })
+    return checkButton;
+}
+
 function addTask() {
     let li = document.createElement('li');
     let span = document.createElement("span");
@@ -92,9 +110,11 @@ function addTask() {
 
 }
 
-function renderOneToDo(element){
+function renderOneToDo(element) {
     let li = document.createElement('li');
     let span = document.createElement('span');
+    const checkButton = createInputCheckbox(li, span);
+    li.appendChild(checkButton);
     span.textContent = element;
     const editButton = createEditButton(li, span);
     const delButton = createDeleteButton(li, span);
