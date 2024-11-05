@@ -3,6 +3,9 @@
 const inputBox = document.querySelector(".addInput");
 const buttonAdd = document.querySelector(".add-todo");
 const containerUL = document.querySelector(".todo-list");
+const buttonActiveTasks = document.querySelector(".active-todos");
+const buttonClosedTasks = document.querySelector(".completed-todos");
+const buttonAllTasks = document.querySelector(".all-todos");
 
 // const data = ["Сделать дз", "Помыть посуду", "Погулять с собакой"];
 const data = [
@@ -171,3 +174,31 @@ function renderOneToDo(element) {
     li.appendChild(span);
     li.append(editButton, delButton);
 }
+///////////////////////////////////////////////////////////////////////////
+
+
+
+buttonActiveTasks.addEventListener("click", () => {
+    containerUL.innerHTML = "";
+    data.forEach((elem) => {
+        if (!elem.isDone) {
+            renderOneToDo(elem);
+        }
+    });
+});
+
+buttonClosedTasks.addEventListener("click", () => {
+    containerUL.innerHTML = "";
+    data.forEach((elem) => {
+        if (elem.isDone) {
+            renderOneToDo(elem);
+        }
+    });
+});
+
+buttonAllTasks.addEventListener("click", () => {
+    containerUL.innerHTML = "";
+    data.forEach((elem) => {
+        renderOneToDo(elem);
+    });
+});
