@@ -93,15 +93,6 @@ buttonAdd.addEventListener("click", () => {
     if (inputBox.value === '') {
         console.log("Поле ввода пустое");
     } else {
-        // let li = document.createElement('li');
-        // let span = document.createElement("span");
-        // span.textContent = inputBox.value;
-        // const editButton = createEditButton(li, span);
-        // const delButton = createDeleteButton(li, span);
-        // containerUL.appendChild(li);
-        // li.appendChild(span);
-        // li.append(editButton, delButton);
-
         const obj = {task: inputBox.value, isDone: false};
         data.push(obj);
         console.log(data);
